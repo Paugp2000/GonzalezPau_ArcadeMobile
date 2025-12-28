@@ -12,10 +12,8 @@ public class PlayerController : MonoBehaviour
     private int numPlayers;
     private void Start()
     {
-        for (int i = 0; i < numPlayers; i++)
-        {
-            animator[i] = GetComponentsInChildren<Animator>()[i];
-        }
+        animator = GetComponentsInChildren<Animator>(); 
+        numPlayers = animator.Length;
     }
     private void Update()
     {
