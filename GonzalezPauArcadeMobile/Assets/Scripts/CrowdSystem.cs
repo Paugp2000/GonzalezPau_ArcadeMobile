@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -8,6 +9,8 @@ public class CrowdSystem : MonoBehaviour
 {
     [SerializeField] private float angle;
     [SerializeField] private float radius;
+    [SerializeField] private Transform runnersParent;
+    [SerializeField] private TextMeshPro numRunners;
 
     void Start()
     {
@@ -18,14 +21,15 @@ public class CrowdSystem : MonoBehaviour
     void Update()
     {
         PlaceRuners();
+        NumPlayersMostrar();
     }
 
     private void PlaceRuners()
     {
-        for (int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < runnersParent.childCount; i++)
         {
             Vector3 childlocalPosition = GetRunnerLocalPosition(i);
-            transform.GetChild(i).localPosition = childlocalPosition;
+            runnersParent.GetChild(i).localPosition = childlocalPosition;
         }
     }
 
@@ -35,5 +39,10 @@ public class CrowdSystem : MonoBehaviour
         float z = radius * Mathf.Sqrt(index) * Mathf.Sin(Mathf.Deg2Rad * index * angle);
 
         return new Vector3(x, 0, z);
+    }
+
+    private void NumPlayersMostrar()
+    {
+        numRunners.text = runnersParent.childCount.ToString();
     }
 }
