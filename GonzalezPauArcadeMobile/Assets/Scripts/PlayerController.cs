@@ -6,10 +6,12 @@ public class PlayerController : MonoBehaviour
 {
     private Vector3 clickedmousePosition;
     private Vector3 clickedplayerPosition;
+    private float roadWidth = 10;
     public float slideSpeed = 7f;
     public float moveSpeed = 2f;
     private Animator [] animator;
     private int numPlayers;
+    [SerializeField] CrowdSystem crowdSystem;
     private void Start()
     {
         animator = GetComponentsInChildren<Animator>(); 
@@ -46,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
             Vector3 position = transform.position;
             position.x = clickedplayerPosition.x + xScreenDiference;
+            position.x = Mathf.Clamp(position.x, -roadWidth / 2 + crowdSystem.returnCrowdRadius(), roadWidth / 2);
             transform.position =  position;  
         }
     }

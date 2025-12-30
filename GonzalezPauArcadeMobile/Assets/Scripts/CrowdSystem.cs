@@ -45,4 +45,9 @@ public class CrowdSystem : MonoBehaviour
     {
         numRunners.text = runnersParent.childCount.ToString();
     }
+
+    public float returnCrowdRadius()
+    {
+        return radius * Mathf.Sqrt(runnersParent.childCount);
+    }
 }
