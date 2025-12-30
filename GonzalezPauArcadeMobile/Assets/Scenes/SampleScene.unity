@@ -307,7 +307,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6037814466789849484, guid: 7ea607cc844c5fe48976dafd94bf22ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.67
       objectReference: {fileID: 0}
     - target: {fileID: 6037814466789849484, guid: 7ea607cc844c5fe48976dafd94bf22ba, type: 3}
       propertyPath: m_LocalPosition.y
@@ -887,6 +887,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 925129974}
+  - component: {fileID: 925129975}
+  - component: {fileID: 925129976}
   m_Layer: 0
   m_Name: Doors
   m_TagString: Untagged
@@ -911,6 +913,49 @@ Transform:
   - {fileID: 744939888}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &925129975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925129973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9015fd1cf4235d0438bf05109a799518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigthDoorRenderer: {fileID: 1040349417}
+  leftDoorRenderer: {fileID: 1139925663}
+  rigthDoorText: {fileID: 1931713393}
+  leftDoorText: {fileID: 1445449562}
+  rigthDoorBonusType: 2
+  rigthDoorBonus: 2
+  leftDoorBonusType: 3
+  leftDoorBonus: 3
+  bonusColor: {r: 0, g: 0.6244457, b: 1, a: 0.45882353}
+  penaltyColor: {r: 0.9811321, g: 0, b: 0, a: 0.5137255}
+--- !u!65 &925129976
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925129973}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 9.413647, y: 3.095504, z: 0.63483286}
+  m_Center: {x: 0.014025688, y: 1.0477515, z: 1.4108899}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,7 +1139,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9c0fddb1b7aa63c4e85f91fa5dae1a1a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.3764706}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1245,7 +1290,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9c0fddb1b7aa63c4e85f91fa5dae1a1a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.34117648}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1441,7 +1486,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6037814466789849484, guid: 7ea607cc844c5fe48976dafd94bf22ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.54
       objectReference: {fileID: 0}
     - target: {fileID: 6037814466789849484, guid: 7ea607cc844c5fe48976dafd94bf22ba, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1499,6 +1544,7 @@ GameObject:
   - component: {fileID: 1550009584}
   - component: {fileID: 1550009585}
   - component: {fileID: 1550009586}
+  - component: {fileID: 1550009587}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1554,6 +1600,19 @@ MonoBehaviour:
   radius: 1
   runnersParent: {fileID: 688784411}
   numRunners: {fileID: 248771997}
+--- !u!114 &1550009587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550009583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 682a78c68844de1429e3e2535b0c6076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crowdSystem: {fileID: 0}
 --- !u!1 &1573171147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1932,7 +1991,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6037814466789849484, guid: 7ea607cc844c5fe48976dafd94bf22ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.42
       objectReference: {fileID: 0}
     - target: {fileID: 6037814466789849484, guid: 7ea607cc844c5fe48976dafd94bf22ba, type: 3}
       propertyPath: m_LocalPosition.y

@@ -50,4 +50,9 @@ public class CrowdSystem : MonoBehaviour
     {
         return radius * Mathf.Sqrt(runnersParent.childCount);
     }
+
+    public void ApplyBonus(int bonusAmount, BonusType bonusType)
+    {
+
+    }
 }
