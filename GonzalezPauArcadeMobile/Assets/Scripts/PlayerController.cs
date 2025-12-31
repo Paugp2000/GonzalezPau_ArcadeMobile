@@ -14,12 +14,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] CrowdSystem crowdSystem;
     private void Start()
     {
-        animator = GetComponentsInChildren<Animator>(); 
-        numPlayers = animator.Length;
+        
     }
     private void Update()
     {
-        
+        animator = GetComponentsInChildren<Animator>();
+        numPlayers = animator.Length;
         MoveForward();
         ManageControl();
 
@@ -52,4 +52,5 @@ public class PlayerController : MonoBehaviour
             transform.position =  position;  
         }
     }
+
 }

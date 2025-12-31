@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerDetection : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] CrowdSystem crowdSystem;
+    [SerializeField] public CrowdSystem crowdSystem;
     void Start()
     {
 
@@ -29,7 +29,9 @@ public class PlayerDetection : MonoBehaviour
                     Debug.Log("Has chocado con una puerta");
 
                     int bonusAmount = doors.getBonusAmount(transform.position.x);
-                    BonusType bonustype = doors.getBonusType(transform.position.x); 
+                    BonusType bonustype = doors.getBonusType(transform.position.x);
+
+                    doors.Disable();
 
                     crowdSystem.ApplyBonus(bonusAmount, bonustype);
                 }

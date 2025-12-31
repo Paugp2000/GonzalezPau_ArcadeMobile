@@ -10,6 +10,7 @@ public class CrowdSystem : MonoBehaviour
     [SerializeField] private float angle;
     [SerializeField] private float radius;
     [SerializeField] private Transform runnersParent;
+    [SerializeField] private GameObject runnerPrefab;
     [SerializeField] private TextMeshPro numRunners;
 
     void Start()
@@ -53,6 +54,36 @@ public class CrowdSystem : MonoBehaviour
 
     public void ApplyBonus(int bonusAmount, BonusType bonusType)
     {
-
+        switch(bonusType)
+        {
+            case BonusType.Addition:
+                AddRunners(bonusAmount);
+                break;
+            case BonusType.Diference:
+                QuitRunners(bonusAmount);
+                break;
+            case BonusType.Multiply:
+                AddRunners(runnersParent.childCount * bonusAmount - runnersParent.childCount);
+                break;
+            case BonusType.Divide:
+                QuitRunners(runnersParent.childCount - runnersParent.childCount / bonusAmount);
+                break;
+        }
+    }
+    public void AddRunners(int number)
+    {
+        for (int i = 0; i < number; i++)
+        {
+            Instantiate(runnerPrefab, runnersParent);
+        }
+    }
+    public void QuitRunners(int number)
+    {
+        for (int i = 0; i < number; i++)
+        {
+            Transform runnerTodestroy = runnersParent.GetChild(number-i);
+            runnerTodestroy.SetParent(null);
+            Destroy(runnerTodestroy.gameObject);
+        }
     }
 }

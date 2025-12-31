@@ -13,6 +13,7 @@ public class Doors : MonoBehaviour
     [SerializeField] private SpriteRenderer leftDoorRenderer;
     [SerializeField] private TextMeshPro rigthDoorText;
     [SerializeField] private TextMeshPro leftDoorText;
+    [SerializeField] private Collider collider;
 
     [Header("Settings")]
     [SerializeField] private BonusType rigthDoorBonusType;
@@ -84,5 +85,10 @@ public class Doors : MonoBehaviour
         else
             return leftDoorBonusType;
 
+    }
+
+    public void Disable()
+    {
+        collider.enabled = false;
     }
 }
