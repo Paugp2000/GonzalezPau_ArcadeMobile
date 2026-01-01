@@ -11,18 +11,59 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 2f;
     private Animator [] animator;
     private int numPlayers;
+    private bool canMove;
     [SerializeField] CrowdSystem crowdSystem;
+    public static PlayerController Instance;
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
     private void Start()
     {
-        
+        GameManager.OnGameStateChanged += GameStateChangedCallback;
     }
     private void Update()
     {
         animator = GetComponentsInChildren<Animator>();
         numPlayers = animator.Length;
-        MoveForward();
-        ManageControl();
+        if(canMove)
+        {
+            MoveForward();
+            ManageControl();
+        }
+        
 
+    }
+    private void GameStateChangedCallback(GameManager.GameState gameState)
+    {
+        if (gameState == GameManager.GameState.Game)
+        {
+            StartMoving();
+        }
+        else
+        {
+            StopMoving();
+        }
+    }
+    private void StartMoving()
+    {
+        canMove = true;
+    }
+    private void StopMoving()
+    {
+        canMove = false;
+        for (int i = 0; i < numPlayers; i++)
+        {
+            animator[i].SetBool("IsRunning", false);
+        }
     }
     public void MoveForward()
     {
