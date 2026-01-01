@@ -844,14 +844,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f759ab76e538c4a45ae277d508f1f5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chunckPrefab:
-  - {fileID: 8329909154991989602, guid: ffdd8e083e25480478f81d5e6351bc42, type: 3}
-  - {fileID: 1347372338164167145, guid: 5fb634ecd5ba1a84381a5cc694decd06, type: 3}
-  - {fileID: 4594070140778592743, guid: 0eb2503857abc4740ac5dbb17df756e5, type: 3}
-  levelChuncks:
-  - {fileID: 7585512011855021079, guid: 634bc6f50c2a5de4fb1bd139898cbae1, type: 3}
-  - {fileID: 1347372338164167145, guid: 5fb634ecd5ba1a84381a5cc694decd06, type: 3}
-  - {fileID: 8768383030095080984, guid: 6ec295c3a42277f479a161c51595609b, type: 3}
+  levels:
+  - {fileID: 11400000, guid: de162fb07fa6d5b45a330cd4b35992ea, type: 2}
 --- !u!4 &697380380
 Transform:
   m_ObjectHideFlags: 0
@@ -1150,7 +1144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a009c48c6b0984e877c78bb089c719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1205168837}
+  target: {fileID: 1550009584}
   offset: {x: 0, y: 5, z: -8}
   smoothSpeed: 0.125
 --- !u!1 &1187040692
@@ -1695,7 +1689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slideSpeed: 7
-  moveSpeed: 0.5
+  moveSpeed: 5
   crowdSystem: {fileID: 1550009586}
 --- !u!114 &1550009586
 MonoBehaviour:
@@ -1965,6 +1959,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1790170189}
+  - component: {fileID: 1790170190}
   m_Layer: 0
   m_Name: ----MANAGERS----
   m_TagString: Untagged
@@ -1990,6 +1985,22 @@ Transform:
   - {fileID: 819936371}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1790170190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790170188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c7fb35e5aa36174ebb12950163ecdfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyPrefab: {fileID: 3974587323120368862, guid: ffdc4c1ea6b972d4aacf6a332457d082, type: 3}
+  amount: 6
+  angle: 137.508
+  radius: 0.5
 --- !u!1 &1953080697
 GameObject:
   m_ObjectHideFlags: 0
@@ -2074,6 +2085,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 688784411}
     m_Modifications:
+    - target: {fileID: 17057902665890735, guid: 7ea607cc844c5fe48976dafd94bf22ba, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 17057902665890735, guid: 7ea607cc844c5fe48976dafd94bf22ba, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6037814466789849484, guid: 7ea607cc844c5fe48976dafd94bf22ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.42

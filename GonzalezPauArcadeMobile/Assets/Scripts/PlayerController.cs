@@ -30,6 +30,10 @@ public class PlayerController : MonoBehaviour
     {
         GameManager.OnGameStateChanged += GameStateChangedCallback;
     }
+    private void OnDestroy()
+    {
+        GameManager.OnGameStateChanged -= GameStateChangedCallback; 
+    }
     private void Update()
     {
         animator = GetComponentsInChildren<Animator>();

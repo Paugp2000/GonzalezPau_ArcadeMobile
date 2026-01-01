@@ -5,8 +5,7 @@ using UnityEngine;
 public class ChunckManager : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private Chunck[] chunckPrefab;
-    [SerializeField] private Chunck[] levelChuncks;
+    [SerializeField] private LevelSO[] levels; 
     private GameObject finishLine;
     public static ChunckManager Instance;
     private void Awake()
@@ -22,11 +21,18 @@ public class ChunckManager : MonoBehaviour
     }
     private void Start()
     {
-        CreateOrderedLevel();
+        GenerateLevel();
 
         finishLine = GameObject.FindGameObjectWithTag("Finish");
     }
-    private void CreateOrderedLevel()
+    private void GenerateLevel()
+    {
+        int currentLevel = getLevel();
+        currentLevel = currentLevel % levels.Length;
+        LevelSO level = levels[currentLevel];
+        CreateLevel(level.chuncks);
+    }
+    private void CreateLevel(Chunck[] levelChuncks )
     {
         Vector3 chunckPosition = Vector3.zero;
         for (int i = 0; i < levelChuncks.Length; i++)
@@ -43,7 +49,7 @@ public class ChunckManager : MonoBehaviour
 
         }
     }
-    private void CreateRandomLevel()
+    /*private void CreateRandomLevel()
     {
         Vector3 chunckPosition = Vector3.zero;
         for (int i = 0; i < 5; i++)
@@ -59,7 +65,7 @@ public class ChunckManager : MonoBehaviour
             chunckPosition.z += chunckInstance.GetLenght() / 2;
 
         }
-    }
+    }*/
     public float getFinishLineZPosition()
     {
         return finishLine.transform.position.z;
