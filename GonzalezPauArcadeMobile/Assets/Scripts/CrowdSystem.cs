@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,6 +13,9 @@ public class CrowdSystem : MonoBehaviour
     [SerializeField] private Transform runnersParent;
     [SerializeField] private GameObject runnerPrefab;
     [SerializeField] private TextMeshPro numRunners;
+    public static Action onGoodDoorSound;
+    public static Action onBadDoorSound;
+
 
     void Start()
     {
@@ -23,6 +27,11 @@ public class CrowdSystem : MonoBehaviour
     {
         PlaceRuners();
         NumPlayersMostrar();
+
+        if (runnersParent.childCount == 0)
+        {
+            GameManager.Instance.setGamestate(GameManager.GameState.Gameover);  
+        }
     }
 
     private void PlaceRuners()
@@ -57,15 +66,19 @@ public class CrowdSystem : MonoBehaviour
         switch(bonusType)
         {
             case BonusType.Addition:
+                onGoodDoorSound?.Invoke();
                 AddRunners(bonusAmount);
                 break;
             case BonusType.Diference:
+                onBadDoorSound?.Invoke();
                 QuitRunners(bonusAmount);
                 break;
             case BonusType.Multiply:
+                onGoodDoorSound?.Invoke();
                 AddRunners(runnersParent.childCount * bonusAmount - runnersParent.childCount);
                 break;
             case BonusType.Divide:
+                onBadDoorSound?.Invoke();
                 QuitRunners(runnersParent.childCount - runnersParent.childCount / bonusAmount);
                 break;
         }
@@ -79,11 +92,25 @@ public class CrowdSystem : MonoBehaviour
     }
     public void QuitRunners(int number)
     {
-        for (int i = 0; i < number; i++)
+        if (number >= runnersParent.childCount)
         {
-            Transform runnerTodestroy = runnersParent.GetChild(number-i);
-            runnerTodestroy.SetParent(null);
-            Destroy(runnerTodestroy.gameObject);
+            for (int i = 0; i < number; i++)
+            {
+                Debug.Log("El numero de corredores es : " + runnersParent.childCount);
+
+                GameManager.Instance.setGamestate(GameManager.GameState.Gameover);
+                Destroy(this.gameObject);
+            }
         }
+        else if (number < runnersParent.childCount)
+        {
+            for (int i = 0; i < number; i++)
+            {
+                Transform runnerTodestroy = runnersParent.GetChild(i);
+                runnerTodestroy.SetParent(null);
+                Destroy(runnerTodestroy.gameObject);
+            }
+        }
+       
     }
 }

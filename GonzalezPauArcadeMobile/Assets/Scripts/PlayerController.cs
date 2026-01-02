@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,6 @@ public class PlayerController : MonoBehaviour
     private bool canMove;
     [SerializeField] CrowdSystem crowdSystem;
     public static PlayerController Instance;
-
     private void Awake()
     {
         if (Instance != null)

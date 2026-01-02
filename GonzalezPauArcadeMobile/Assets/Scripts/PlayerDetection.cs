@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class PlayerDetection : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] public CrowdSystem crowdSystem;
+    public static Action victorySoundEvent;
     void Start()
     {
 
@@ -15,7 +17,11 @@ public class PlayerDetection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DetectDoors();
+        if (GameManager.Instance.IsGameState())
+        {
+            DetectDoors();
+        }
+        
     }
 
     private void DetectDoors()
@@ -41,7 +47,9 @@ public class PlayerDetection : MonoBehaviour
                 Debug.Log("Has llegado a la meta");
 
                 PlayerPrefs.SetInt("level", PlayerPrefs.GetInt("level") + 1);
-                SceneManager.LoadScene(0);
+                //SceneManager.LoadScene(0);
+                victorySoundEvent?.Invoke();
+                GameManager.Instance.setGamestate(GameManager.GameState.LevelComplete); 
             }
         }
     }

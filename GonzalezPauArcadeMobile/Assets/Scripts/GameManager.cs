@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        
+              
     }
 
     // Update is called once per frame
@@ -44,5 +44,15 @@ public class GameManager : MonoBehaviour
     public bool IsGameState()
     {
         return gameState == GameState.Game;
+    }
+
+    public bool IsGameOver()
+    {
+        return gameState == GameState.Gameover;
+    }
+
+    public bool IsLevelComplete()
+    {
+        return gameState == GameState.LevelComplete;
     }
 }

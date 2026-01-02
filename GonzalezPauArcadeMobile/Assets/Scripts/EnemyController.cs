@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class EnemyController : MonoBehaviour
     private State state;
     private Transform targetRunner;
     private Animator animator;
+    public static Action deathRunnerSound;
 
     private void Start()
     {
@@ -66,6 +68,7 @@ public class EnemyController : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, targetRunner.position, Time.deltaTime * moveSpeed);
         if (Vector3.Distance(transform.position, targetRunner.position) < 1f)
         {
+            deathRunnerSound?.Invoke();
             Destroy(targetRunner.gameObject);
             Destroy(gameObject);   
         }
