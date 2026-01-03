@@ -8,6 +8,7 @@ public class SoundsManager : MonoBehaviour
     [SerializeField]private AudioSource hitBaddoorSound;
     [SerializeField]private AudioSource deathRunnerSound;
     [SerializeField] private AudioSource victorySound;
+    private bool soundsCanPlay = true;
     void Start()
     {
         CrowdSystem.onGoodDoorSound += PlayGoodDoorSound;
@@ -29,18 +30,29 @@ public class SoundsManager : MonoBehaviour
     }
     private void PlayGoodDoorSound()
     {
-        hitGooddoorSound.Play();
+        if (soundsCanPlay)
+            hitGooddoorSound.Play();
+     
     }
     private void PlayBadDoorSound()
     {
+        if (soundsCanPlay)
         hitBaddoorSound.Play();
     }
     private void PlayDeathRunnerSound()
     {
+        if (soundsCanPlay)
         deathRunnerSound.Play();    
     }
     private void PlayVictorySound()
     {
+        if (soundsCanPlay)  
         victorySound.Play();
     }
+
+    public void disableEnableAllSounds(bool isOn)
+    {
+        soundsCanPlay = isOn;   
+    }
+
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,8 +12,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gamePanel;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject levelCompletePanel;
+    [SerializeField] private GameObject settingsPanel;
     [SerializeField] private Slider progresSlider;
     [SerializeField] private TextMeshProUGUI levelText;
+    private bool isSettingsOn = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +24,7 @@ public class UIManager : MonoBehaviour
         gamePanel.SetActive(false); 
         gameOverPanel.SetActive(false);
         levelCompletePanel.SetActive(false);
+        settingsPanel.SetActive(false);
 
 
     }
@@ -51,6 +55,21 @@ public class UIManager : MonoBehaviour
     public void nextButtonPressed()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void settingsButtonPressed()
+    {
+        if (!isSettingsOn)
+        {
+            settingsPanel.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            settingsPanel.SetActive(false);
+            Time.timeScale = 1f;
+        }
+        isSettingsOn = !isSettingsOn;
     }
     public void UpdateProgresBar()
     {
