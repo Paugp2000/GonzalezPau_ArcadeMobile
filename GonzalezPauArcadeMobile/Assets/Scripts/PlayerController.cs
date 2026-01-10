@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private int numPlayers;
     private bool canMove;
     [SerializeField] CrowdSystem crowdSystem;
+    [SerializeField] ParticleSystem particleRunning;
     public static PlayerController Instance;
     private void Awake()
     {
@@ -75,6 +76,7 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < numPlayers; i++)
         {
             animator[i].SetBool("IsRunning", true);
+            particleRunning.gameObject.SetActive(true);
         }
     }
     public void ManageControl()
